@@ -38,7 +38,12 @@
       };
 
       perSystem =
-        { system, pkgs, ... }:
+        {
+          system,
+          pkgs,
+          lib,
+          ...
+        }:
         {
           # You can define actual Nixvim configurations here
           nixvimConfigurations = {
@@ -52,12 +57,12 @@
           checks = {
             nixfmt = pkgs.runCommand "check-with-nixfmt-tree" { } ''
               touch $out
-              ${pkgs.nixfmt-tree}/bin/treefmt --ci ${./.}
+              ${lib.getExe pkgs.nixfmt-tree} --ci ${./.}
             '';
 
             statix = pkgs.runCommand "check-with-statix" { } ''
               touch $out
-              ${pkgs.statix}/bin/statix check ${./.}
+              ${lib.getExe pkgs.statix} check ${./.}
             '';
           };
 
