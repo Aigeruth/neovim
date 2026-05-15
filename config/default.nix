@@ -1,4 +1,4 @@
-{
+_: {
   imports = [
     ./clipboard.nix
     ./colours.nix

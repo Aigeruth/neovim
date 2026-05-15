@@ -1,7 +1,11 @@
+{ lib, pkgs, ... }:
 {
   lsp.servers = {
     html.enable = true;
-    nixd.enable = true;
+    nixd = {
+      enable = true;
+      config.settings.nixd.formatting.command = [ "${lib.getExe pkgs.nixfmt}" ];
+    };
     rubocop = {
       enable = true;
       packageFallback = true;
@@ -10,5 +14,8 @@
       enable = true;
       packageFallback = true;
     };
+  };
+  plugins = {
+    lspconfig.enable = true;
   };
 }
