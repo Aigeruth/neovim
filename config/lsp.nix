@@ -16,6 +16,7 @@
     };
   };
   plugins = {
+    lsp-format.enable = true;
     lspconfig.enable = true;
   };
 }
