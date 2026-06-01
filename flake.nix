@@ -2,14 +2,20 @@
   description = "A Nixvim configuration";
 
   inputs = {
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpgks.url = "github:NixOS/nixpkgs/nixos-26.05";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
       inputs = {
         flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
       };
     };
+    systems.url = "github:nix-systems/default";
   };
 
   outputs =
@@ -17,6 +23,7 @@
       self,
       flake-parts,
       nixpkgs,
+      nixpkgs-darwin,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -60,6 +67,11 @@
               inherit system;
               modules = with self.nixvimModules; [
                 default
+                {
+                  nixpkgs = {
+                    source = if pkgs.stdenv.hostPlatform.isDarwin then nixpkgs-darwin else nixpkgs;
+                  };
+                }
               ];
             };
           };
