@@ -2,19 +2,18 @@
   description = "A Nixvim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-	flake-parts.follows = "flake-parts";
-      };
-    };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpgks.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
   };
 
   outputs =
-    { self, flake-parts, ... }@inputs:
+    {
+      self,
+      flake-parts,
+      nixpkgs,
+      ...
+    }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
