@@ -58,7 +58,11 @@
         enable = true;
         packageFallback = true;
       };
-      html.enable = true;
+      # Javascript
+      biome = {
+        enable = true;
+        packageFallback = true;
+      };
       # Nix
       nixd = {
         enable = true;
