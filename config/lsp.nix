@@ -90,6 +90,10 @@
         enable = true;
         packageFallback = true;
       };
+      yamlls = {
+        enable = true;
+        packageFallback = true;
+      };
     };
   };
   plugins = {
