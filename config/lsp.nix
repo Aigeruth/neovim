@@ -90,6 +90,11 @@
         enable = true;
         packageFallback = true;
       };
+      # TOML
+      tombi = {
+        enable = true;
+        packageFallback = true;
+      };
       yamlls = {
         enable = true;
         packageFallback = true;
