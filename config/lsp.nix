@@ -54,7 +54,16 @@
     ];
     servers = {
       # CSS
+      cssls = {
+        enable = true;
+        packageFallback = true;
+      };
       tailwindcss = {
+        enable = true;
+        packageFallback = true;
+      };
+      # HTML
+      html = {
         enable = true;
         packageFallback = true;
       };
