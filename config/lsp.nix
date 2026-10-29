@@ -99,6 +99,11 @@
         enable = true;
         packageFallback = true;
       };
+      # Rust
+      rust_analyzer = {
+        enable = true;
+        packageFallback = true;
+      };
       # TOML
       tombi = {
         enable = true;
