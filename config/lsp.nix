@@ -72,6 +72,10 @@
         enable = true;
         packageFallback = true;
       };
+      jsonls = {
+        enable = true;
+        packageFallback = true;
+      };
       # Nix
       nixd = {
         enable = true;
